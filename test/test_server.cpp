@@ -32,7 +32,7 @@ protected:
 public:
 
   FibonacciServer(std::string name) :
-  server_(nh_, name, boost::bind(&FibonacciServer::executeCB, this, _1), false),
+  server_(nh_, name, std::bind(&FibonacciServer::executeCB, this, std::placeholders::_1), false),
   action_name_(name)
   {
     server_.start();
